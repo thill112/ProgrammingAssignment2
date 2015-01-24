@@ -24,26 +24,26 @@ makeCacheMatrix <- function(x = matrix()) {
   
   ##       set: takes new matrix as an input and clears m (inverse) 
   set <- function(y) {
-    print("makeCacheMatrix set function called\n")
+    ## print("makeCacheMatrix set function called\n")
     x <<- y
     m <<- NULL
   }
   
   ##  get: returns matrix data
   get <- function() { 
-    print("makeCacheMatrix get function called\n")
+    ## print("makeCacheMatrix get function called\n")
     x
   }
   
   ## setinverse: sets cached inverse (m) of matrix.
   setinverse <- function(thedata) {
-    print("makeCacheMatrix setinverse function called\n")
+    ## print("makeCacheMatrix setinverse function called\n")
     m <<- thedata
   }
   
   ## getinverse: returns the cached inverse matrix (m)
   getinverse <- function() {
-    print("makeCacheMatrix getsolve function called\n")
+    ## print("makeCacheMatrix getsolve function called\n")
     m
   }
   
@@ -71,17 +71,23 @@ makeCacheMatrix <- function(x = matrix()) {
 ## OUPUT :
 ##         inverse for the matrix.
 ## cacheSolve uses functions from within the makeCacheMatrix object.
+##
+##
+##
 ## EXAMPLE USAGE:
 ## yy <- matrix(rnorm(1000),10,10)
 ## xx <- makeCacheMatrix(yy)
 ## zz <- cacheSolve(xx)
+## to verify I did the following
+## aa<- solve(yy)            solve matrix manually.
+## identical(aa,zz)          compare solutions.
 
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
   m <- x$getinverse()
   if(!is.null(m)) {
-    printf("using cached data")
+    ## printf("using cached data")
     return(m)
   }
   data <- x$get()
